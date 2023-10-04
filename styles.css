@@ -1,0 +1,103 @@
+body{
+  color: #f3f3f3;
+  background-color: rgb(82, 82, 82);
+  font-family: 'Roboto Slab';
+  padding-top: 10%;
+} 
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.location-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location {
+  font-size: 0.7rem;
+}
+
+.location-date {
+  font-size: 1.5rem;
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: 3fr 3fr; 
+  gap: 2rem;
+}
+
+.temperature-container {
+  position: relative;
+  line-height: 90%;
+  font-size: 16rem;
+  font-weight: bolder; 
+  padding-right: 45px; 
+}
+
+.temperature::after {
+ content: '° C';
+ font-size: 2rem;
+ letter-spacing: -3px;
+ position: absolute;
+ top: -5rem;
+}
+
+.conditions-container {
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.condition-text {
+  line-height: 2rem;
+  font-weight: lighter;
+  font-size: 1.2rem;
+}
+
+.week {
+  display: flex;
+  gap: 20px;
+  width: 500px;
+}
+
+.svg-days {
+  fill: #dbdbdb;
+  width: 30px;
+  height: 30px;
+}
+
+.days {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10%;
+  position: relative;
+  font-size: 0.8rem;
+  line-height: 1px;
+  padding: 10px;
+}
+
+.days-temperature {
+  margin-right: 0.5rem;
+}
+
+.today {
+  background-color: #5e5e5e;
+}
+
+.days-temperature::after {
+  content: '° C';
+  font-size: 0.6rem;
+  position: absolute;
+ 
+ }
+
