@@ -1,6 +1,20 @@
 import {forecast} from './script.js';
 
-function updateHistoryData (historyData) {
+function addForecastDay (data, history = false) {
+  const weekContainer = document.querySelector('.js-week-container');
+  const dayTemplate = document.getElementById('day-template');
+
+  const dayContainer = dayTemplate.content.cloneNode(true);
+  const dayIcon = dayContainer.querySelector('.js-day-icon');
+  const dayTempMax = dayContainer.querySelector('.js-temp-max');
+  const dayTempMin = dayContainer.querySelector('.js-temp-min');
+  const dayDate = dayContainer.querySelector('.js-day-date');
+
+  dayIcon.setAttribute('src', data.day.condition.icon);
+  dayTempMax.textContent = data.day.maxtemp_c;
+  dayTempMin.textContent = data.day.mintemp_c;
+  dayDate.textContent = data.date.substr(5,5);
+  weekContainer.appendChild(dayContainer);
 
 } 
 
@@ -59,7 +73,9 @@ export function eventHandler () {
       const weatherData = forecast(cityClean);
       weatherData.then((data) =>
         {
-          updateWeatherData(data)
+          updateWeatherData(data);
+          addForecastDay(data.forecast.forecastday[1]);
+          addForecastDay(data.forecast.forecastday[2]);
         });
     }
 

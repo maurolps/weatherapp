@@ -104,8 +104,8 @@ body{
   width: 64px;
 }
 
-.today-icon {
-  width: 32px;
+.today-icon, .day-icon {
+  width: 48px;
 }
 
 .condition-text {
