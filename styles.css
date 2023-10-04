@@ -1,8 +1,9 @@
 body{
   color: #f3f3f3;
-  background-color: rgb(82, 82, 82);
+  background-color: rgb(43, 43, 43);
   font-family: 'Roboto Slab';
-  padding-top: 10%;
+  margin: 0;
+  padding: 0;
 } 
 
 .main-container {
@@ -12,6 +13,42 @@ body{
   align-items: center;
   justify-content: center;
   margin: auto;
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+  width: min(90%, 900px);
+  padding-right: 10px;
+}
+
+.search {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.search input {
+  background-color: #e7ebe9;
+  padding: 10px;
+}
+
+.search button {
+  position: absolute;
+  z-index: 10; 
+  right: 10px; 
+  top: 20%;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.search button:hover {
+  scale: 1.1;
+}
+
+.search button:active {
+  scale: 0.95;
 }
 
 .location-container {
@@ -64,13 +101,19 @@ body{
 }
 
 .week {
+  margin-top: 60px;
+  color: #5e5e5e;
   display: flex;
-  gap: 20px;
-  width: 500px;
+  background-color: #e2e2e2;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  width: 100dvw;
+  height: 180px;
 }
 
 .svg-days {
-  fill: #dbdbdb;
+  fill: #5e5e5e;
   width: 30px;
   height: 30px;
 }
@@ -79,7 +122,8 @@ body{
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 10%;
+  justify-content: center;
+  width: min(10%, 110px);
   position: relative;
   font-size: 0.8rem;
   line-height: 1px;
@@ -87,17 +131,20 @@ body{
 }
 
 .days-temperature {
-  margin-right: 0.5rem;
+  position: relative;
 }
 
 .today {
-  background-color: #5e5e5e;
+  background-color: #53d489;
+  height: 95%;
 }
 
 .days-temperature::after {
   content: '° C';
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   position: absolute;
+  right: -0.6rem;
+  top: -0.3rem;
  
  }
 
