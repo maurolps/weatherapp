@@ -4,6 +4,7 @@ body{
   font-family: 'Roboto Slab';
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
 } 
 
 .main-container {
@@ -31,6 +32,10 @@ body{
 .search input {
   background-color: #e7ebe9;
   padding: 10px;
+}
+
+.search input::placeholder {
+  color: #a0a0a0;
 }
 
 .search button {
@@ -67,7 +72,7 @@ body{
 
 .info-container {
   display: grid;
-  grid-template-columns: 3fr 3fr; 
+  grid-template-columns: 1fr 1fr; 
   gap: 2rem;
 }
 
@@ -92,12 +97,41 @@ body{
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
+  max-width: fit-content;
+}
+
+.city-icon {
+  width: 64px;
 }
 
 .condition-text {
   line-height: 2rem;
   font-weight: lighter;
   font-size: 1.2rem;
+}
+
+.condition-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.7em;
+  text-transform: capitalize;
+}
+
+.city-name::after {
+  text-transform: lowercase;
+  content: ' city';
+}
+
+.wind::after {
+  text-transform: lowercase;
+  content: ' km/h';
+}
+
+.feelslike::after {
+  content: '° C';
 }
 
 .week {
@@ -110,6 +144,7 @@ body{
   width: 100vw;
   width: 100dvw;
   height: 180px;
+  text-transform: capitalize;
 }
 
 .svg-days {
@@ -135,8 +170,13 @@ body{
 }
 
 .today {
-  background-color: #53d489;
+  background-color: #2086ea;
+  color: #f3f3f3;
   height: 95%;
+}
+
+.svg-today {
+  fill: #f3f3f3;
 }
 
 .days-temperature::after {
@@ -145,6 +185,5 @@ body{
   position: absolute;
   right: -0.6rem;
   top: -0.3rem;
- 
  }
 
