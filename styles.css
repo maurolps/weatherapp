@@ -104,6 +104,10 @@ body{
   width: 64px;
 }
 
+.today-icon {
+  width: 32px;
+}
+
 .condition-text {
   line-height: 2rem;
   font-weight: lighter;

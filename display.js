@@ -1,6 +1,12 @@
 import {forecast} from './script.js';
 
+function updateHistoryData (historyData) {
+
+} 
+
 function updateWeatherData (weatherData) {
+  const weekContainer = document.querySelector('.js-week-container');
+  const todayTemplate = document.getElementById('today-template');
   const cityName = document.querySelector('.js-city-name')
   const location = document.querySelector('.js-location');
   const date = document.querySelector('.js-date');
@@ -10,6 +16,8 @@ function updateWeatherData (weatherData) {
   const wind = document.querySelector('.js-wind');
   const humidity = document.querySelector('.js-humidity');
   const icon = document.querySelector('.js-city-icon');
+
+
   console.log('update: ', weatherData);
 
   const temperature = weatherData.current.temp_c.toFixed(0);
@@ -24,6 +32,18 @@ function updateWeatherData (weatherData) {
   humidity.textContent = `Humidity: ${weatherData.current.humidity} %`;
 
   icon.setAttribute('src', weatherData.current.condition.icon);
+
+  const todayContainer = todayTemplate.content.cloneNode(true);
+  const todayIcon = todayContainer.querySelector('.js-today-icon');
+  const todayTempMax = todayContainer.querySelector('.js-temp-max');
+  const todayTempMin = todayContainer.querySelector('.js-temp-min');
+
+  todayIcon.setAttribute('src', weatherData.current.condition.icon);
+  todayTempMax.textContent = weatherData.forecast.forecastday[0].day.maxtemp_c;
+  todayTempMin.textContent = weatherData.forecast.forecastday[0].day.mintemp_c;
+  weekContainer.innerHTML = '';
+  weekContainer.appendChild(todayContainer);
+
 }
 
 export function eventHandler () {
