@@ -1,4 +1,4 @@
-
+import {eventHandler} from './display.js';
 
 async function forecast (city) {
   const weatherApi = 'https://api.weatherapi.com/v1/current.json?key=2460c90164ff4b66a89171433230310&q=';
@@ -15,11 +15,19 @@ async function forecast (city) {
   console.log('Feels Like F: ', weatherData.current.feelslike_f);
   console.log('Wind Mph: ', weatherData.current.wind_mph); // 1 Mph = 0,44704 m/s
   console.log('Humidity: ', weatherData.current.humidity, '%');
+  return weatherData;
 
   } catch (err) {
     console.error(err);
   }
 }
 
-// forecast('sao paulo'); 
+eventHandler();
+
+// temp function to clear console
+setTimeout(() => {
+console.clear();  
+}, 3000);
+
+export {forecast};
 

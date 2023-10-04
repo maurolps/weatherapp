@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Montserrat:wght@700&family=Open+Sans:wght@300&family=Roboto&family=Roboto+Condensed&family=Roboto+Slab&family=Squada+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js"></script>
+  <script src="script.js" type="module"></script>
   <title>Weather App</title>
 </head>
 <body>
@@ -15,8 +15,8 @@
     <div class="main-container">
       <div class="search-container">
         <div class="search">
-          <input type="text" id="city" placeholder="sao paulo">
-          <button type="button">
+          <input class="js-input-search" type="text" id="city" placeholder="sao paulo">
+          <button class="js-btn-search" type="button">
             <svg fill="black" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M3.05,13H1V11H3.05C3.5,6.83 6.83,3.5 11,3.05V1H13V3.05C17.17,3.5 20.5,6.83 20.95,11H23V13H20.95C20.5,17.17 17.17,20.5 13,20.95V23H11V20.95C6.83,20.5 3.5,17.17 3.05,13M12,5A7,7 0 0,0 5,12A7,7 0 0,0 12,19A7,7 0 0,0 19,12A7,7 0 0,0 12,5Z" /></svg>
           </button>
         </div>
