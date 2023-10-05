@@ -1,4 +1,4 @@
-import {forecast} from './script.js';
+import {forecast, forecastHistory} from './script.js';
 
 function addForecastDay (data, history = false) {
   const weekContainer = document.querySelector('.js-week-container');
@@ -14,7 +14,11 @@ function addForecastDay (data, history = false) {
   dayTempMax.textContent = data.day.maxtemp_c;
   dayTempMin.textContent = data.day.mintemp_c;
   dayDate.textContent = data.date.substr(5,5);
-  weekContainer.appendChild(dayContainer);
+  if (history) {
+    weekContainer.insertBefore(dayContainer, weekContainer.firstChild);
+  } else {
+    weekContainer.appendChild(dayContainer);
+  }
 
 } 
 
@@ -71,12 +75,20 @@ export function eventHandler () {
       const cityClean = city.normalize('NFD').replace(/\p{Mn}/gu, "");
       console.log ('search: ', cityClean);
       const weatherData = forecast(cityClean);
+      const historyDayOne = forecastHistory(cityClean, 1);
+      const historyDayTwo = forecastHistory(cityClean, 2);
       weatherData.then((data) =>
         {
           updateWeatherData(data);
           addForecastDay(data.forecast.forecastday[1]);
           addForecastDay(data.forecast.forecastday[2]);
         });
+      historyDayOne.then((data) => {
+        addForecastDay(data.forecast.forecastday[0], true);
+      })
+      historyDayTwo.then((data) => {
+        addForecastDay(data.forecast.forecastday[0], true);
+      })
     }
 
   })
