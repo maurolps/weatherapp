@@ -18,15 +18,27 @@ body{
 
 .search-container {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
   width: min(90%, 900px);
   padding-right: 10px;
+  margin-bottom: 40px;
+}
+
+.status-container {
+  font-size: 0.6rem;
+  margin-top: 5px;
+  text-transform: none;
+  color:#a0a0a0;
+}
+
+.hide {
+  scale: 0;
 }
 
 .search {
   position: relative;
   margin-top: 20px;
-  margin-bottom: 40px;
 }
 
 .search input {

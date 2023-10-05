@@ -1,4 +1,4 @@
-import {eventHandler} from './display.js';
+import {eventHandler, throwError} from './display.js';
 
 function formatDate (date) {
   // yyyy-MM-dd for weather history api
@@ -19,7 +19,7 @@ async function forecastHistory (city, daysBefore) {
     const weatherHistoryData = await response.json();
     return weatherHistoryData;
   } catch (err) {
-    console.error(err);
+    console.log('History Error: ', err);
   }
 }
 
@@ -30,7 +30,7 @@ async function forecast (city) {
     const weatherFutureData = await response.json();
     return weatherFutureData;
     } catch (err) {
-      console.error(err); 
+      throwError('Cannot load data...'); 
   }
 }
 

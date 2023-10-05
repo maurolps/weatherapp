@@ -1,5 +1,14 @@
 import {forecast, forecastHistory} from './script.js';
 
+export const throwError = (message) => {
+  const statusContainer = document.querySelector('.status-container');
+  if (message !== '') statusContainer.textContent = message;
+  statusContainer.classList.toggle('hide');
+  setTimeout(() => {
+    statusContainer.classList.toggle('hide');
+  }, 3000);
+}
+
 function addForecastDay (data, history = false) {
   const weekContainer = document.querySelector('.js-week-container');
   const dayTemplate = document.getElementById('day-template');
@@ -78,6 +87,10 @@ export function eventHandler () {
       const historyDayTwo = forecastHistory(cityClean, 2);
       weatherData.then((data) =>
         {
+          if ("error" in data) {
+            throwError('Not found.');
+            return;
+          }
           updateWeatherData(data);
           addForecastDay(data.forecast.forecastday[1]);
           addForecastDay(data.forecast.forecastday[2]);
@@ -87,7 +100,11 @@ export function eventHandler () {
           historyDayTwo.then((data) => {
             addForecastDay(data.forecast.forecastday[0], true);
           })
-        });
+        })
+      .catch((err) => {
+        console.log('catch: ', err);
+        return;
+      })
 
     }
 
