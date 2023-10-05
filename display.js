@@ -73,7 +73,6 @@ export function eventHandler () {
     if (city !== '') {
       //remove invalid characters
       const cityClean = city.normalize('NFD').replace(/\p{Mn}/gu, "");
-      console.log ('search: ', cityClean);
       const weatherData = forecast(cityClean);
       const historyDayOne = forecastHistory(cityClean, 1);
       const historyDayTwo = forecastHistory(cityClean, 2);
@@ -82,13 +81,14 @@ export function eventHandler () {
           updateWeatherData(data);
           addForecastDay(data.forecast.forecastday[1]);
           addForecastDay(data.forecast.forecastday[2]);
+          historyDayOne.then((data) => {
+            addForecastDay(data.forecast.forecastday[0], true);
+          })
+          historyDayTwo.then((data) => {
+            addForecastDay(data.forecast.forecastday[0], true);
+          })
         });
-      historyDayOne.then((data) => {
-        addForecastDay(data.forecast.forecastday[0], true);
-      })
-      historyDayTwo.then((data) => {
-        addForecastDay(data.forecast.forecastday[0], true);
-      })
+
     }
 
   })
