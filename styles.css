@@ -75,38 +75,41 @@ body{
 }
 
 .location {
-  font-size: 0.7rem;
+  font-size: 0.5rem;
 }
 
 .location-date {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .info-container {
   display: grid;
   grid-template-columns: 1fr 1fr; 
   gap: 2rem;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .temperature-container {
   position: relative;
-  line-height: 90%;
-  font-size: 16rem;
+  line-height: 100%;
+  font-size: 10rem;
   font-weight: bolder; 
-  padding-right: 45px; 
+  padding-right: 20px;
+  padding-left: 10px; 
 }
 
 .temperature::after {
  content: '° C';
- font-size: 2rem;
- letter-spacing: -3px;
+ font-size: 1.2rem;
+ letter-spacing: -2px;
  position: absolute;
- top: -5rem;
+ top: -3rem;
 }
 
 .conditions-container {
   padding-top: 1rem;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   display: flex;
   flex-direction: column;
   max-width: fit-content;
@@ -121,9 +124,9 @@ body{
 }
 
 .condition-text {
-  line-height: 2rem;
-  font-weight: lighter;
-  font-size: 1.2rem;
+  line-height: 1.3rem;
+  font-weight: bold;
+  font-size: 0.7rem;
 }
 
 .condition-icon {
@@ -179,6 +182,9 @@ body{
   font-size: 0.8rem;
   line-height: 1px;
   padding: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 0.7rem;
 }
 
 .days-temperature {
@@ -203,3 +209,42 @@ body{
   top: -0.3rem;
  }
 
+ @media screen and (min-width: 400px) {
+  .temperature-container {
+    font-size: 12rem;
+  }
+  .condition-text {
+    font-size: 1.2rem;
+  }
+  
+  .conditions-container {
+    font-size: 0.7rem;
+  }
+  
+  .location {
+    font-size: 0.7rem;
+  }
+  
+  .location-date {
+    font-size: 1.2rem;
+  }
+  
+  .days {
+    font-size: 0.7rem;
+  }
+}
+
+@media screen and (min-width: 680px) {
+  .temperature-container {
+    line-height: 90%;
+    font-size: 16rem;
+    padding-right: 45px;
+    padding-left: 10px; 
+  }
+  
+  .temperature::after {
+   font-size: 2rem;
+   letter-spacing: -3px;
+   top: -5rem;
+  }
+}

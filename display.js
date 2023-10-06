@@ -44,9 +44,6 @@ function updateWeatherData (weatherData) {
   const humidity = document.querySelector('.js-humidity');
   const icon = document.querySelector('.js-city-icon');
 
-
-  console.log('update: ', weatherData);
-
   const temperature = weatherData.current.temp_c.toFixed(0);
   ctemperature.textContent = `${temperature}`;
 
