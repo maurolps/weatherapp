@@ -74,37 +74,49 @@ export function eventHandler () {
   const btnSearch = document.querySelector('.js-btn-search');
   const inputSearch = document.querySelector('.js-input-search');
 
+  const search = (city) => {
+    //format city name
+    const cityClean = city.normalize('NFD').replace(/\p{Mn}/gu, "");
+
+    const weatherData = forecast(cityClean);
+    const historyDayOne = forecastHistory(cityClean, 1);
+    const historyDayTwo = forecastHistory(cityClean, 2);
+    weatherData.then((data) =>
+      {
+        if ("error" in data) {
+          throwError('Not found.');
+          return;
+        }
+        updateWeatherData(data);
+        addForecastDay(data.forecast.forecastday[1]);
+        addForecastDay(data.forecast.forecastday[2]);
+        historyDayOne.then((data) => {
+          addForecastDay(data.forecast.forecastday[0], true);
+        })
+        historyDayTwo.then((data) => {
+          addForecastDay(data.forecast.forecastday[0], true);
+        })
+      })
+    .catch((err) => {
+      console.log('catch: ', err);
+      return;
+    })
+
+  }
+
   btnSearch.addEventListener('click', () => {
     const city = inputSearch.value;
     if (city !== '') {
-      //remove invalid characters
-      const cityClean = city.normalize('NFD').replace(/\p{Mn}/gu, "");
-      const weatherData = forecast(cityClean);
-      const historyDayOne = forecastHistory(cityClean, 1);
-      const historyDayTwo = forecastHistory(cityClean, 2);
-      weatherData.then((data) =>
-        {
-          if ("error" in data) {
-            throwError('Not found.');
-            return;
-          }
-          updateWeatherData(data);
-          addForecastDay(data.forecast.forecastday[1]);
-          addForecastDay(data.forecast.forecastday[2]);
-          historyDayOne.then((data) => {
-            addForecastDay(data.forecast.forecastday[0], true);
-          })
-          historyDayTwo.then((data) => {
-            addForecastDay(data.forecast.forecastday[0], true);
-          })
-        })
-      .catch((err) => {
-        console.log('catch: ', err);
-        return;
-      })
-
+      search(city);
     }
 
+  })
+
+  inputSearch.addEventListener('keydown', (key) => {
+    const city = inputSearch.value;
+    if (key.keyCode === 13 && city !== "") {
+      search(city)
+    }
   })
 
 }
